@@ -10,8 +10,8 @@ AV.Cloud.define('hello', function(request) {
 
 AV.Cloud.define('bdCode2session', function(request){
 	let code = request.code;
-	let client_id = request.client_id;
-	let sk = request.sk;
+	let client_id = "LxG1SrmGPAXGzwrzEvxEABZslxnjzP0t"
+	let sk = "rfGp0GnH7pNaBfUFfkcqZpeBw6Yu08Zu";
 
 	let url = 'https://openapi.baidu.com/nalogin/getSessionKeyByCode';
 	let req = https.request(url, (error, reponse, body) =>{
@@ -26,13 +26,7 @@ AV.Cloud.define('bdCode2session', function(request){
 	   return [error, reponse, body];
 	});
 
-	let content = JSON.stringify({
-		code:code,
-		client_id:client_id,
-		sk:sk
-	});
+	let content = `code=${code}&client_id=${client_id}&sk=${sk}`
 	console.log(`content is ${content}`);
 	req.write(content);
-
-	
 });
